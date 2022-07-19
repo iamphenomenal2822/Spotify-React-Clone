@@ -1,11 +1,19 @@
-import React from "react";
+import React,{useEffect} from "react";
 import styled from "styled-components";
+import axios from "axios";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Body from "./Body";
+import { useStateProvider } from "../utils/StateProvider";
  
 function Spotify(){
+    const [{ token }, dispatch] = useStateProvider();
+    useEffect (() => {
+        const getUserInfo = async () => {
+            const { data } = await axios.get("https://api.spotify.com/v1/me")
+        }
+    },[dispatch, token]);
     return(
         <Container>
             <div className="spotify_body">

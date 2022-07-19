@@ -2,37 +2,36 @@ import React from "react";
 import styled from "styled-components";
 import { MdHomeFilled, MdSearch } from "react-icons/md";
 import { IoLibrary } from "react-icons/io5";
-// import Playlists from "./Playlists";
+import Playlists from "./Playlists";
 
 function Sidebar(){
     return(
         <Container>
-      <div className="top__links">
-        <div className="logo">
-          <img
-            src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png"
-            alt="spotify"
-          />
-        </div>
+          <div className="top__links">
+           <div className="logo">
+           <img
+             src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png"
+             alt="spotify"/> 
+         </div>
         <ul>
           <li>
-            <MdHomeFilled />
+              <MdHomeFilled />
             <span>Home</span>
           </li>
           <li>
-            <MdSearch />
+             <MdSearch /> 
             <span>Search</span>
           </li>
           <li>
-            <IoLibrary />
+             <IoLibrary /> 
             <span>Your Library</span>
           </li>
         </ul>
       </div>
-      {/* <Playlists /> */}
+      <Playlists />
     </Container>
-    )
-}
+    );
+};
 
 const Container = styled.div`
   background-color: black;
@@ -62,9 +61,12 @@ const Container = styled.div`
         display: flex;
         gap: 1rem;
         cursor: pointer;
+        font-size:16px;
+        font-weight: 500;
         transition: 0.3s ease-in-out;
         &:hover {
           color: white;
+          background-color:
         }
       }
     }
@@ -72,3 +74,5 @@ const Container = styled.div`
 `;
 
 export default Sidebar;
+
+
