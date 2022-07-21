@@ -6,13 +6,28 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Body from "./Body";
 import { useStateProvider } from "../utils/StateProvider";
+import { reducerCases } from "../utils/Constants";
  
 function Spotify(){
     const [{ token }, dispatch] = useStateProvider();
     useEffect (() => {
         const getUserInfo = async () => {
-            const { data } = await axios.get("https://api.spotify.com/v1/me")
-        }
+            const { data } = await axios.get("https://api.spotify.com/v1/me",{
+                headers: {
+                    Authorization: "Bearer " + token,
+                    "Content-Type": "application/json",
+                },
+            });   
+       
+        
+        const userInfo = {
+            userId : data.id,
+            userName : data.display_name,
+        };
+        dispatch({ type: reducerCases.SET_USER, userInfo });
+    };
+    getUserInfo();
+        // console.log({ data });
     },[dispatch, token]);
     return(
         <Container>
@@ -44,7 +59,7 @@ grid-template-rows: 85vh 15vh;
     grid-template-columns: 15vw 85vw;
     height: 100%;
     background: linear-gradient(transparent,rgba(0,0,0,1));
-    background-color: rgb(32,87,100);
+    background-color: #0523ce;
     
     .body{
         height: 100%;
