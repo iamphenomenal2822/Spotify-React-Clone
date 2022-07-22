@@ -83,6 +83,7 @@ ul {
       display: flex;
       gap: 1rem;
       font-size: 14px;
+      margin-left: 1rem;
       cursor: pointer;
       transition: 0.3s ease-in-out;
       &:hover {

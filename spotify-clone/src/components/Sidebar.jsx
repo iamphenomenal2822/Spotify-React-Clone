@@ -39,7 +39,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 100%;
+  width: 90%;
   .top__links {
     display: flex;
     flex-direction: column;
@@ -47,7 +47,7 @@ const Container = styled.div`
       text-align: center;
       margin: 1rem 0;
       img {
-        max-inline-size: 80%;
+        max-inline-size: 90%;
         block-size: auto;
       }
     }
@@ -55,13 +55,14 @@ const Container = styled.div`
       list-style-type: none;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.8rem;
       padding: 1rem;
       li {
         display: flex;
-        gap: 1rem;
+        gap: 0.6rem;
+        margin-left: 1rem;
         cursor: pointer;
-        font-size:16px;
+        font-size:15px;
         font-weight: 500;
         transition: 0.3s ease-in-out;
         &:hover {
