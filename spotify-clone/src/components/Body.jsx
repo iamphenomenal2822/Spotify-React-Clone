@@ -5,11 +5,11 @@ import { useStateProvider } from "../utils/StateProvider";
 import { AiFillClockCircle } from "react-icons/ai";
 import { reducerCases } from "../utils/Constants";
 
-function Body(){
+function Body({headerBackground}){
     const [{ token,selectedPlaylistId,selectedPlaylist }, dispatch] = useStateProvider();
     useEffect(() => {
         const getInitialPlaylist = async () => {
-            console.log(selectedPlaylistId)
+            // console.log(selectedPlaylistId)
              const response = await axios.get(`https://api.spotify.com/v1/playlists/${selectedPlaylistId}`,
              {
                 headers: {
@@ -38,10 +38,14 @@ function Body(){
     };
         getInitialPlaylist();
     },[token,dispatch,selectedPlaylistId]);
-
+const msToMinutesAndSeconds = (ms) => {
+    const minutes = Math.floor(ms/60000);
+    const seconds = ((ms % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds <10 ? "0" : "") + seconds;
+};
     return(
 
-    <Container>
+    <Container headerBackground ={headerBackground}>
         {selectedPlaylist && (
             <>
               <div className="playlist">
@@ -101,9 +105,9 @@ function Body(){
                                         <span>{album}</span>
                                     </div>
                                     <div className="col">
-                                        <span>{duration}</span>
+                                        <span>{msToMinutesAndSeconds(duration)}</span>
                                     </div>
-                                </div>
+                                </div> 
                             )
                         })
                     }
@@ -183,6 +187,7 @@ const Container = styled.div`
             }
         }
     }
-}`
+}
+`;
 
 export default Body;
